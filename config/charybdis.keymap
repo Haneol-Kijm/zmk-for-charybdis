@@ -102,10 +102,10 @@
 
         BASE {
             bindings = <
-&kp Q  &kp W  &kp F      &kp P      &kp B        &kp J            &kp L      &kp U      &kp Y    &kp SEMI
-&kp A  &kp R  &kp S      &kp T      &kp G        &kp M            &kp N      &kp E      &kp I    &kp O
-&kp Z  &kp X  &kp D      &kp C      &kp V        &kp K            &kp H      &kp COMMA  &kp DOT  &tog 5
-              &lt 2 TAB  &lt 1 RET  &kp SPACE    &lt 3 BACKSPACE  &lt 4 DEL
+&kp Q        &kp W  &kp F      &kp P      &kp B        &kp J            &kp L      &kp U      &kp Y    &kp SEMI
+&mt LSHFT A  &kp R  &kp S      &kp T      &kp G        &kp M            &kp N      &kp E      &kp I    &mt RSHFT O
+&kp Z        &kp X  &kp D      &kp C      &kp V        &kp K            &kp H      &kp COMMA  &kp DOT  &tog 5
+                    &lt 2 TAB  &lt 1 RET  &kp SPACE    &lt 3 BACKSPACE  &lt 4 DEL
             >;
         };
 
