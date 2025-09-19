@@ -38,7 +38,14 @@
         del_word: del_word {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp BACKSPACE>,
+                <&macro_release>,
+                <&kp LCTRL>;
+
             label = "DEL_WORD";
         };
     };
@@ -129,10 +136,10 @@
 
         NAV {
             bindings = <
-&trans  &trans  &trans  &trans  &trans    &trans  &kp HOME  &kp UP    &kp END    &trans
-&trans  &trans  &trans  &trans  &trans    &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans
-&trans  &trans  &trans  &trans  &trans    &trans  &trans    &trans    &trans     &trans
-                &trans  &trans  &trans    &trans  &trans
+&trans  &trans  &trans     &trans  &trans    &trans  &kp HOME  &kp UP    &kp END    &trans
+&trans  &trans  &del_word  &trans  &trans    &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans
+&trans  &trans  &trans     &trans  &trans    &trans  &trans    &trans    &trans     &trans
+                &trans     &trans  &trans    &trans  &trans
             >;
         };
 
@@ -149,7 +156,7 @@
             bindings = <
 &trans  &trans          &msc SCRL_UP    &trans           &trans      &trans  &trans  &trans  &trans  &trans
 &trans  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT  &trans      &trans  &trans  &trans  &trans  &trans
-&trans  &trans          &trans          &trans           &trans      &trans  &trans  &trans  &trans  &tog 0
+&trans  &trans          &trans          &trans           &trans      &trans  &trans  &trans  &trans  &trans
                         &mkp MB1        &mkp MB3         &mkp MB2    &trans  &trans
             >;
         };
