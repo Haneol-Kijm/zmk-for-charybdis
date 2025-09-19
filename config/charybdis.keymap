@@ -39,9 +39,12 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
-                <&macro_press &kp LCTRL>,
-                <&macro_tap &kp BACKSPACE>,
-                <&macro_release &kp LCTRL>;
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp BACKSPACE>,
+                <&macro_release>,
+                <&kp LCTRL>;
 
             label = "DEL_WORD";
         };
@@ -98,6 +101,26 @@
         rbrack {
             bindings = <&kp RBKT>;
             key-positions = <2 4>;
+        };
+
+        lctl {
+            bindings = <&kp LCTRL>;
+            key-positions = <12 13>;
+        };
+
+        lalt {
+            bindings = <&kp LEFT_ALT>;
+            key-positions = <12 11>;
+        };
+
+        lmet {
+            bindings = <&kp LEFT_GUI>;
+            key-positions = <12 10>;
+        };
+
+        lctl+lalt {
+            bindings = <&kp LC(LALT)>;
+            key-positions = <11 12 13>;
         };
     };
 
