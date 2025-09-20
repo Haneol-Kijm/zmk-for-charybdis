@@ -234,6 +234,11 @@
             bindings = <&kp DOLLAR>;
             key-positions = <2 12>;
         };
+
+        percent {
+            bindings = <&kp PERCENT>;
+            key-positions = <12 23>;
+        };
     };
 
     keymap {
