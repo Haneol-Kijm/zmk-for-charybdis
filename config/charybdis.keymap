@@ -178,21 +178,25 @@
         lctl {
             bindings = <&kp LCTRL>;
             key-positions = <12 13>;
+            require-prior-idle-ms = <40>;
         };
 
         lalt {
             bindings = <&kp LEFT_ALT>;
             key-positions = <12 11>;
+            require-prior-idle-ms = <40>;
         };
 
         lmet {
             bindings = <&kp LEFT_GUI>;
             key-positions = <12 10>;
+            require-prior-idle-ms = <40>;
         };
 
         lctl+lalt {
             bindings = <&kp LC(LALT)>;
-            key-positions = <12 13>;
+            key-positions = <12 13 11>;
+            require-prior-idle-ms = <40>;
         };
 
         cut {
@@ -258,16 +262,19 @@
         rctrl {
             bindings = <&kp RIGHT_CONTROL>;
             key-positions = <16 17>;
+            require-prior-idle-ms = <40>;
         };
 
         ralt {
             bindings = <&kp RIGHT_ALT>;
             key-positions = <17 18>;
+            require-prior-idle-ms = <40>;
         };
 
         rmet {
             bindings = <&kp RIGHT_META>;
             key-positions = <19 17>;
+            require-prior-idle-ms = <40>;
         };
 
         k {
@@ -333,6 +340,12 @@
         hash {
             bindings = <&kp HASH>;
             key-positions = <17 26>;
+        };
+
+        rctl+ralt {
+            bindings = <&kp RC(RIGHT_ALT)>;
+            key-positions = <17 16 18>;
+            require-prior-idle-ms = <40>;
         };
     };
 
