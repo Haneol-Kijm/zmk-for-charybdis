@@ -239,6 +239,101 @@
             bindings = <&kp PERCENT>;
             key-positions = <12 23>;
         };
+
+        tilde {
+            bindings = <&kp TILDE>;
+            key-positions = <8 9>;
+        };
+
+        apo {
+            bindings = <&kp SINGLE_QUOTE>;
+            key-positions = <7 8>;
+        };
+
+        quo {
+            bindings = <&kp DOUBLE_QUOTES>;
+            key-positions = <7 6>;
+        };
+
+        rctrl {
+            bindings = <&kp RIGHT_CONTROL>;
+            key-positions = <16 17>;
+        };
+
+        ralt {
+            bindings = <&kp RIGHT_ALT>;
+            key-positions = <17 18>;
+        };
+
+        rmet {
+            bindings = <&kp RIGHT_META>;
+            key-positions = <19 17>;
+        };
+
+        k {
+            bindings = <&kp V>;
+            key-positions = <25 26>;
+        };
+
+        eq {
+            bindings = <&kp EQUAL>;
+            key-positions = <26 27>;
+        };
+
+        minus {
+            bindings = <&kp MINUS>;
+            key-positions = <28 27>;
+        };
+
+        plus {
+            bindings = <&kp PLUS>;
+            key-positions = <28 26>;
+        };
+
+        underscore {
+            bindings = <&kp UNDERSCORE>;
+            key-positions = <27 25>;
+        };
+
+        question {
+            bindings = <&kp QUESTION>;
+            key-positions = <8 18>;
+        };
+
+        pipe {
+            bindings = <&kp PIPE>;
+            key-positions = <17 7>;
+        };
+
+        caret {
+            bindings = <&kp CARET>;
+            key-positions = <6 16>;
+        };
+
+        star {
+            bindings = <&kp STAR>;
+            key-positions = <9 18>;
+        };
+
+        grave {
+            bindings = <&kp GRAVE>;
+            key-positions = <19 8>;
+        };
+
+        capsword {
+            bindings = <&caps_word>;
+            key-positions = <18 7>;
+        };
+
+        bslash {
+            bindings = <&kp BACKSLASH>;
+            key-positions = <6 17>;
+        };
+
+        hash {
+            bindings = <&kp HASH>;
+            key-positions = <17 26>;
+        };
     };
 
     keymap {
