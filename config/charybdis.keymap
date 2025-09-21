@@ -9,6 +9,8 @@
     quick-tap-ms = <150>;
 };
 
+&sk { quick-release; };
+
 / {
     macros {
         To1_macro: To1_macro {
@@ -174,7 +176,7 @@
         };
 
         lctl {
-            bindings = <&kp LCTRL>;
+            bindings = <&sk LCTRL>;
             key-positions = <12 13>;
             require-prior-idle-ms = <40>;
         };
