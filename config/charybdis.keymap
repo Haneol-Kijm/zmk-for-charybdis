@@ -236,7 +236,7 @@
 
         dollar {
             bindings = <&kp DOLLAR>;
-            key-positions = <2 12>;
+            key-positions = <3 13>;
         };
 
         percent {
