@@ -6,7 +6,7 @@
 &lt {
     tapping-term-ms = <200>;
     flavor = "tap-preferred";
-    quick-tap-ms = <150>;
+    quick-tap-ms = <100>;
 };
 
 &sk { quick-release; };
@@ -260,13 +260,13 @@
         };
 
         rctrl {
-            bindings = <&kp RIGHT_CONTROL>;
+            bindings = <&kp LEFT_CONTROL>;
             key-positions = <16 17>;
             require-prior-idle-ms = <40>;
         };
 
         ralt {
-            bindings = <&kp RIGHT_ALT>;
+            bindings = <&kp LEFT_ALT>;
             key-positions = <17 18>;
             require-prior-idle-ms = <40>;
         };
