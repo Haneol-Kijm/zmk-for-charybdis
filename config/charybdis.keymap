@@ -349,6 +349,17 @@
         };
     };
 
+    behaviors {
+        // 'mouse_word' 라는 이름의 새로운 자동 레이어 동작을 정의합니다.
+        mouse_word: mouse_word {
+            compatible = "zmk,behavior-auto-layer";
+            #binding-cells = <1>;
+            // 마우스 레이어가 켜진 상태에서, 아래 키들을 누르면 레이어가 꺼지지 않고 유지됩니다.
+            // 사용자님의 키맵(layer_4)에 있는 마우스 클릭 키들을 여기에 모두 적어줍니다.
+            continue-list = <LCLK RCLK MCLK>; 
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
