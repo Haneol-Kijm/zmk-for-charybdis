@@ -370,7 +370,7 @@
             bindings = <
 &kp Q        &kp W  &kp F      &kp P      &kp B        &kp J         &kp L            &kp U      &kp Y    &kp SEMI
 &mt LSHFT A  &kp R  &kp S      &kp T      &kp G        &kp M         &kp N            &kp E      &kp I    &mt RSHFT O
-&kp Z        &kp X  &kp C      &kp D      &kp V        &kp K         &kp H            &kp COMMA  &kp DOT  &mouse_word 5 
+&kp Z        &kp X  &kp C      &kp D      &kp V        &kp K         &kp H            &kp COMMA  &kp DOT  &mouse_word 5
                     &kp SPACE  &lt 1 RET  &lt 2 TAB    &lt 4 DELETE  &lt 3 BACKSPACE
             >;
         };
@@ -413,10 +413,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans          &msc SCRL_UP    &trans           &trans      &trans  &trans  &trans  &trans  &trans
-&trans  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT  &trans      &trans  &trans  &trans  &trans  &trans
-&trans  &trans          &trans          &trans           &trans      &trans  &trans  &trans  &trans  &trans
-                        &mkp MB1        &mkp MB2         &mkp MB3    &trans  &trans
+&trans  &kp C_AC_BACK   &msc SCRL_UP    &kp C_AC_FORWARD  &trans      &trans  &trans  &trans  &trans  &trans
+&trans  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT   &trans      &trans  &trans  &trans  &trans  &trans
+&trans  &trans          &trans          &trans            &trans      &trans  &trans  &trans  &trans  &trans
+                        &mkp MB1        &mkp MB2          &mkp MB3    &trans  &trans
             >;
         };
 
