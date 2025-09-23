@@ -5,7 +5,7 @@ manifest:
     - name: DoctorWangWang
       url-base: https://github.com/DoctorWangWang
     - name: urob
-      url-base: https://github.com/urob　　　　　　　　　　　　　　　　　
+      url-base: https://github.com/urob
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -16,7 +16,7 @@ manifest:
       revision: main
     - name: zmk-auto-layer
       remote: urob
-      revision: main　ㅇㅇㅇ
+      revision: main
       
   self:
     path: config
