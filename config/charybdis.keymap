@@ -43,13 +43,7 @@
         del_word: del_word {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LCTRL>,
-                <&macro_tap>,
-                <&kp BACKSPACE>,
-                <&macro_release>,
-                <&kp LCTRL>;
+            bindings = <&kp LA(BACKSPACE)>;
 
             label = "DEL_WORD";
         };
@@ -57,13 +51,7 @@
         cut: cut {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LCTRL>,
-                <&macro_tap>,
-                <&kp X>,
-                <&macro_release>,
-                <&kp LCTRL>;
+            bindings = <&kp LG(X)>;
 
             label = "CUT";
         };
@@ -71,13 +59,7 @@
         copy: copy {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LCTRL>,
-                <&macro_tap>,
-                <&kp C>,
-                <&macro_release>,
-                <&kp LCTRL>;
+            bindings = <&kp LG(C)>;
 
             label = "COPY";
         };
@@ -85,13 +67,7 @@
         paste: paste {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LCTRL>,
-                <&macro_tap>,
-                <&kp V>,
-                <&macro_release>,
-                <&kp LCTRL>;
+            bindings = <&kp LG(V)>;
 
             label = "PASTE";
         };
@@ -99,13 +75,7 @@
         undo: undo {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LCTRL>,
-                <&macro_tap>,
-                <&kp Z>,
-                <&macro_release>,
-                <&kp LCTRL>;
+            bindings = <&kp LG(Z)>;
 
             label = "UNDO";
         };
@@ -113,13 +83,7 @@
         redo: redo {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LCTRL>,
-                <&macro_tap>,
-                <&kp Y>,
-                <&macro_release>,
-                <&kp LCTRL>;
+            bindings = <&kp LG(LS(Z))>;
 
             label = "REDO";
         };
@@ -432,7 +396,7 @@
 
         NAV {
             bindings = <
-&trans  &trans  &trans     &trans  &trans    &trans  &kp HOME  &kp UP    &kp END    &trans
+&trans  &trans  &trans     &trans  &trans    &trans  &kp LG(LEFT)  &kp UP    &kp LG(RIGHT)    &trans
 &trans  &trans  &del_word  &trans  &trans    &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans
 &trans  &trans  &trans     &trans  &trans    &trans  &trans    &trans    &trans     &trans
                 &trans     &trans  &trans    &trans  &trans
