@@ -7,7 +7,7 @@ firmware variants.
 | Artifact | PMW3610 implementation | Purpose |
 | --- | --- | --- |
 | `charybdis-right-badjeff-pinned.uf2` | badjeff `44b4a76b...` | Control: reproduces the current source configuration |
-| `charybdis-right-official-pinned.uf2` | upstream Zephyr driver | Test: changes only the PMW3610 implementation and equivalent axis processing |
+| `charybdis-right-official-swap-only-pinned.uf2` | upstream Zephyr driver | Test: keeps the axis swap while removing the hardware-rejected X/Y inversion |
 
 Pinned source revisions:
 
@@ -20,11 +20,14 @@ Pinned source revisions:
 
 1. Keep `charybdis-right-badjeff-pinned.uf2` as the rollback image.
 2. Power the right half from a stable source while flashing.
-3. Flash only `charybdis-right-official-pinned.uf2` to the right half.
+3. Flash only `charybdis-right-official-swap-only-pinned.uf2` to the right half.
 4. Do not flash `settings_reset` and do not clear Bluetooth pairings for this test.
 5. Confirm pointer direction, scrolling, and clicks, then observe normal use for several days.
 6. If initialization, tracking, or disconnect behavior is worse, flash the pinned badjeff image back to the right half.
 
 The two variants share the board target, ZMK/Zephyr version, keymap, BLE setup,
-400 CPI, axis orientation, and scroll scaling. Driver-specific initialization,
-power management, and reporting behavior remain intentionally different.
+400 CPI, and scroll scaling. The official variant keeps only the X/Y axis swap;
+the earlier swap-plus-both-inversions mapping was removed after an on-device
+test showed that it reversed both pointer directions. Driver-specific
+initialization, power management, and reporting behavior remain intentionally
+different.

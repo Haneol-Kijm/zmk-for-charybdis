@@ -20,7 +20,7 @@ include:
     artifact-name: charybdis-right-badjeff-pinned
   - board: nice_nano@2.0.0//zmk
     shield: charybdis_right
-    artifact-name: charybdis-right-official-pinned
+    artifact-name: charybdis-right-official-swap-only-pinned
     cmake-args: >-
       -DEXTRA_CONF_FILE=${GITHUB_WORKSPACE}/config/pmw3610_official.conf
       -DEXTRA_DTC_OVERLAY_FILE=${GITHUB_WORKSPACE}/config/pmw3610_official.overlay

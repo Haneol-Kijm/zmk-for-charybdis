@@ -23,18 +23,21 @@
     smart-mode;
 };
 
-/* badjeff performs these transforms inside the driver; upstream does not. */
+/*
+ * Hardware test showed that X/Y inversion reverses both pointer directions on
+ * this build. Keep only the axis swap required by the sensor orientation.
+ */
 &trackball_listener {
     input-processors
         = <&zip_xy_transform
-            (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>
+            (INPUT_TRANSFORM_XY_SWAP)>
         ;
 };
 
 &trackball_scroll_layer {
     input-processors
         = <&zip_xy_transform
-            (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>
+            (INPUT_TRANSFORM_XY_SWAP)>
         , <&zip_xy_to_scroll_mapper>
         , <&zip_scroll_scaler 1 70>
         ;
