@@ -1,0 +1,41 @@
+#include <dt-bindings/zmk/input_transform.h>
+
+/*
+ * A/B test variant: replace only the PMW3610 implementation while preserving
+ * the board, ZMK revision, keymap, 400 CPI, orientation, and scroll behavior.
+ */
+&trackball {
+    compatible = "pixart,pmw3610";
+
+    /delete-property/ irq-gpios;
+    /delete-property/ cpi;
+    /delete-property/ swap-xy;
+    /delete-property/ invert-x;
+    /delete-property/ invert-y;
+    /delete-property/ evt-type;
+    /delete-property/ x-input-code;
+    /delete-property/ y-input-code;
+
+    motion-gpios = <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+    zephyr,axis-x = <INPUT_REL_X>;
+    zephyr,axis-y = <INPUT_REL_Y>;
+    res-cpi = <400>;
+    smart-mode;
+};
+
+/* badjeff performs these transforms inside the driver; upstream does not. */
+&trackball_listener {
+    input-processors
+        = <&zip_xy_transform
+            (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>
+        ;
+};
+
+&trackball_scroll_layer {
+    input-processors
+        = <&zip_xy_transform
+            (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>
+        , <&zip_xy_to_scroll_mapper>
+        , <&zip_scroll_scaler 1 70>
+        ;
+};
