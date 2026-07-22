@@ -1,8 +1,9 @@
-#include <dt-bindings/zmk/input_transform.h>
-
 /*
  * A/B test variant: replace only the PMW3610 implementation while preserving
- * the board, ZMK revision, keymap, 400 CPI, orientation, and scroll behavior.
+ * the board, ZMK revision, keymap, 400 CPI, and scroll behavior.
+ *
+ * Do not apply axis swapping or sign inversion. On-device testing showed that
+ * the prior transform exchanged horizontal and vertical movement.
  */
 &trackball {
     compatible = "pixart,pmw3610";
@@ -21,24 +22,4 @@
     zephyr,axis-y = <INPUT_REL_Y>;
     res-cpi = <400>;
     smart-mode;
-};
-
-/*
- * Hardware test showed that X/Y inversion reverses both pointer directions on
- * this build. Keep only the axis swap required by the sensor orientation.
- */
-&trackball_listener {
-    input-processors
-        = <&zip_xy_transform
-            (INPUT_TRANSFORM_XY_SWAP)>
-        ;
-};
-
-&trackball_scroll_layer {
-    input-processors
-        = <&zip_xy_transform
-            (INPUT_TRANSFORM_XY_SWAP)>
-        , <&zip_xy_to_scroll_mapper>
-        , <&zip_scroll_scaler 1 70>
-        ;
 };
