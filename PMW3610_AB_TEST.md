@@ -7,7 +7,7 @@ firmware variants.
 | Artifact | PMW3610 implementation | Purpose |
 | --- | --- | --- |
 | `charybdis-right-badjeff-pinned.uf2` | badjeff `44b4a76b...` | Control: reproduces the current source configuration |
-| `charybdis-right-official-no-transform-pinned.uf2` | upstream Zephyr driver | Test: applies neither X/Y axis swapping nor sign inversion |
+| `charybdis-right-official-invert-xy-no-swap-pinned.uf2` | upstream Zephyr driver | Test: inverts both directions without swapping the axes |
 
 Pinned source revisions:
 
@@ -20,14 +20,15 @@ Pinned source revisions:
 
 1. Keep `charybdis-right-badjeff-pinned.uf2` as the rollback image.
 2. Power the right half from a stable source while flashing.
-3. Flash only `charybdis-right-official-no-transform-pinned.uf2` to the right half.
+3. Flash only `charybdis-right-official-invert-xy-no-swap-pinned.uf2` to the right half.
 4. Do not flash `settings_reset` and do not clear Bluetooth pairings for this test.
 5. Confirm pointer direction, scrolling, and clicks, then observe normal use for several days.
 6. If initialization, tracking, or disconnect behavior is worse, flash the pinned badjeff image back to the right half.
 
 The two variants share the board target, ZMK/Zephyr version, keymap, BLE setup,
-400 CPI, and scroll scaling. The official variant applies no coordinate
-transform. X/Y sign inversion was removed after the first on-device test, and
-X/Y axis swapping was removed after the second test showed that horizontal and
-vertical movement were exchanged. Driver-specific initialization, power
-management, and reporting behavior remain intentionally different.
+400 CPI, and scroll scaling. The official variant uses the upstream driver's
+`invert-x` and `invert-y` properties but does not swap the axes or apply a ZMK
+coordinate processor. This follows on-device tests showing that horizontal and
+vertical axes are aligned while both directions require reversal.
+Driver-specific initialization, power management, and reporting behavior
+remain intentionally different.

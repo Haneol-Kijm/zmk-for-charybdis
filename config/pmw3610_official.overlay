@@ -2,8 +2,8 @@
  * A/B test variant: replace only the PMW3610 implementation while preserving
  * the board, ZMK revision, keymap, 400 CPI, and scroll behavior.
  *
- * Do not apply axis swapping or sign inversion. On-device testing showed that
- * the prior transform exchanged horizontal and vertical movement.
+ * Keep the sensor's X/Y sign inversion, but do not swap the axes. On-device
+ * testing showed that raw axes are aligned while both directions need reversal.
  */
 &trackball {
     compatible = "pixart,pmw3610";
@@ -11,8 +11,6 @@
     /delete-property/ irq-gpios;
     /delete-property/ cpi;
     /delete-property/ swap-xy;
-    /delete-property/ invert-x;
-    /delete-property/ invert-y;
     /delete-property/ evt-type;
     /delete-property/ x-input-code;
     /delete-property/ y-input-code;
