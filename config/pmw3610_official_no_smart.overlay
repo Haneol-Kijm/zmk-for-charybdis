@@ -1,0 +1,9 @@
+/*
+ * One-variable A/B test: inherit the verified official PMW3610 configuration
+ * and disable only the sensor's dynamic smart-mode algorithm.
+ */
+#include "pmw3610_official.overlay"
+
+&trackball {
+    /delete-property/ smart-mode;
+};

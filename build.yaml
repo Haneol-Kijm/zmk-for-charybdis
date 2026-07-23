@@ -25,4 +25,10 @@ include:
       -DEXTRA_CONF_FILE=${GITHUB_WORKSPACE}/config/pmw3610_official.conf
       -DEXTRA_DTC_OVERLAY_FILE=${GITHUB_WORKSPACE}/config/pmw3610_official.overlay
   - board: nice_nano@2.0.0//zmk
+    shield: charybdis_right
+    artifact-name: charybdis-right-official-invert-xy-no-swap-smart-off-pinned
+    cmake-args: >-
+      -DEXTRA_CONF_FILE=${GITHUB_WORKSPACE}/config/pmw3610_official.conf
+      -DEXTRA_DTC_OVERLAY_FILE=${GITHUB_WORKSPACE}/config/pmw3610_official_no_smart.overlay
+  - board: nice_nano@2.0.0//zmk
     shield: settings_reset

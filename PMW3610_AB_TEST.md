@@ -1,13 +1,14 @@
 # PMW3610 A/B firmware test
 
 This branch freezes the source revisions used by the successful firmware build
-on 2026-04-21 (GitHub Actions run `24703904180`) and builds two right-half
-firmware variants.
+on 2026-04-21 (GitHub Actions run `24703904180`) and builds controlled
+right-half firmware variants.
 
-| Artifact | PMW3610 implementation | Purpose |
-| --- | --- | --- |
-| `charybdis-right-badjeff-pinned.uf2` | badjeff `44b4a76b...` | Control: reproduces the current source configuration |
-| `charybdis-right-official-invert-xy-no-swap-pinned.uf2` | upstream Zephyr driver | Test: inverts both directions without swapping the axes |
+| Artifact | PMW3610 implementation | Smart mode | Purpose |
+| --- | --- | --- | --- |
+| `charybdis-right-badjeff-pinned.uf2` | badjeff `44b4a76b...` | On | Rollback control |
+| `charybdis-right-official-invert-xy-no-swap-pinned.uf2` | upstream Zephyr driver | On | Official-driver baseline with verified axes |
+| `charybdis-right-official-invert-xy-no-swap-smart-off-pinned.uf2` | upstream Zephyr driver | Off | One-variable smart-mode test |
 
 Pinned source revisions:
 
@@ -20,15 +21,27 @@ Pinned source revisions:
 
 1. Keep `charybdis-right-badjeff-pinned.uf2` as the rollback image.
 2. Power the right half from a stable source while flashing.
-3. Flash only `charybdis-right-official-invert-xy-no-swap-pinned.uf2` to the right half.
-4. Do not flash `settings_reset` and do not clear Bluetooth pairings for this test.
-5. Confirm pointer direction, scrolling, and clicks, then observe normal use for several days.
-6. If initialization, tracking, or disconnect behavior is worse, flash the pinned badjeff image back to the right half.
+3. Keep `charybdis-right-official-invert-xy-no-swap-pinned.uf2` as the
+   official-driver smart-on baseline.
+4. Flash only
+   `charybdis-right-official-invert-xy-no-swap-smart-off-pinned.uf2` to the
+   right half.
+5. Do not flash `settings_reset` and do not clear Bluetooth pairings for this test.
+6. Confirm pointer direction, scrolling, and clicks, then observe normal use for several days.
+7. If tracking quality is worse, restore the smart-on official baseline. If the
+   whole-keyboard freeze recurs, classify smart mode as insufficient and restore
+   the smart-on baseline before testing report-rate limits.
 
-The two variants share the board target, ZMK/Zephyr version, keymap, BLE setup,
-400 CPI, and scroll scaling. The official variant uses the upstream driver's
-`invert-x` and `invert-y` properties but does not swap the axes or apply a ZMK
-coordinate processor. This follows on-device tests showing that horizontal and
-vertical axes are aligned while both directions require reversal.
-Driver-specific initialization, power management, and reporting behavior
-remain intentionally different.
+The driver variants share the board target, ZMK/Zephyr version, keymap, BLE
+setup, 400 CPI, and scroll scaling. The official variants use the upstream
+driver's `invert-x` and `invert-y` properties but do not swap the axes or apply
+a ZMK coordinate processor. This follows on-device tests showing that
+horizontal and vertical axes are aligned while both directions require
+reversal.
+
+The smart-on official baseline reproduced a whole-central/BLE freeze during
+active trackball use. A single physical reset restored the existing Bluetooth
+pairing in approximately 1–3 seconds, which makes a persistent loss of power
+unlikely. The smart-off variant changes only the `smart-mode` devicetree
+property; CPI, axes, keymap, source revisions, BLE configuration, and reporting
+path remain unchanged.
