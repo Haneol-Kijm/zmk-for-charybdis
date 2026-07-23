@@ -115,11 +115,11 @@
 
 
 / {
-    trackball_listener {
+    trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
-        scroll_layer {
+        trackball_scroll_layer: scroll_layer {
             layers = <1>;
             input-processors
                 = <&zip_xy_to_scroll_mapper>

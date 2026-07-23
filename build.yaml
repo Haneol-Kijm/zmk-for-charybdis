@@ -17,5 +17,25 @@ include:
     shield: charybdis_left
   - board: nice_nano@2.0.0//zmk
     shield: charybdis_right
+    artifact-name: charybdis-right-badjeff-pinned
+  - board: nice_nano@2.0.0//zmk
+    shield: charybdis_right
+    artifact-name: charybdis-right-official-invert-xy-no-swap-pinned
+    cmake-args: >-
+      -DEXTRA_CONF_FILE=${GITHUB_WORKSPACE}/config/pmw3610_official.conf
+      -DEXTRA_DTC_OVERLAY_FILE=${GITHUB_WORKSPACE}/config/pmw3610_official.overlay
+  - board: nice_nano@2.0.0//zmk
+    shield: charybdis_right
+    artifact-name: charybdis-right-official-invert-xy-no-swap-smart-off-pinned
+    cmake-args: >-
+      -DEXTRA_CONF_FILE=${GITHUB_WORKSPACE}/config/pmw3610_official.conf
+      -DEXTRA_DTC_OVERLAY_FILE=${GITHUB_WORKSPACE}/config/pmw3610_official_no_smart.overlay
+  - board: nice_nano@2.0.0//zmk
+    shield: charybdis_right
+    artifact-name: charybdis-right-official-invert-xy-no-swap-rate-125hz-pinned
+    cmake-args: >-
+      -DZMK_EXTRA_MODULES=${GITHUB_WORKSPACE}/config/modules/pmw3610-rate-limit
+      -DEXTRA_CONF_FILE=${GITHUB_WORKSPACE}/config/pmw3610_official_rate_125hz.conf
+      -DEXTRA_DTC_OVERLAY_FILE=${GITHUB_WORKSPACE}/config/pmw3610_official.overlay
   - board: nice_nano@2.0.0//zmk
     shield: settings_reset
