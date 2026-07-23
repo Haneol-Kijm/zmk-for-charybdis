@@ -8,7 +8,8 @@ right-half firmware variants.
 | --- | --- | --- | --- |
 | `charybdis-right-badjeff-pinned.uf2` | badjeff `44b4a76b...` | On | Rollback control |
 | `charybdis-right-official-invert-xy-no-swap-pinned.uf2` | upstream Zephyr driver | On | Official-driver baseline with verified axes |
-| `charybdis-right-official-invert-xy-no-swap-smart-off-pinned.uf2` | upstream Zephyr driver | Off | One-variable smart-mode test |
+| `charybdis-right-official-invert-xy-no-swap-smart-off-pinned.uf2` | upstream Zephyr driver | Off | Rejected: whole-central/BLE freeze reproduced |
+| `charybdis-right-official-invert-xy-no-swap-rate-125hz-pinned.uf2` | upstream Zephyr driver plus report aggregator | On | One-variable 8 ms/125 Hz report-rate test |
 
 Pinned source revisions:
 
@@ -23,14 +24,17 @@ Pinned source revisions:
 2. Power the right half from a stable source while flashing.
 3. Keep `charybdis-right-official-invert-xy-no-swap-pinned.uf2` as the
    official-driver smart-on baseline.
-4. Flash only
-   `charybdis-right-official-invert-xy-no-swap-smart-off-pinned.uf2` to the
-   right half.
+4. The smart-off variant reproduced the whole-keyboard freeze and is retained
+   only as a rejected experiment.
 5. Do not flash `settings_reset` and do not clear Bluetooth pairings for this test.
-6. Confirm pointer direction, scrolling, and clicks, then observe normal use for several days.
-7. If tracking quality is worse, restore the smart-on official baseline. If the
-   whole-keyboard freeze recurs, classify smart mode as insufficient and restore
-   the smart-on baseline before testing report-rate limits.
+6. Flash only
+   `charybdis-right-official-invert-xy-no-swap-rate-125hz-pinned.uf2` to the
+   right half.
+7. Confirm pointer direction, scrolling, and clicks, then observe normal use
+   for several days.
+8. If the whole-keyboard freeze recurs, classify the 125 Hz limit as
+   insufficient and restore the smart-on official baseline before the next
+   experiment.
 
 The driver variants share the board target, ZMK/Zephyr version, keymap, BLE
 setup, 400 CPI, and scroll scaling. The official variants use the upstream
@@ -39,9 +43,15 @@ a ZMK coordinate processor. This follows on-device tests showing that
 horizontal and vertical axes are aligned while both directions require
 reversal.
 
-The smart-on official baseline reproduced a whole-central/BLE freeze during
-active trackball use. A single physical reset restored the existing Bluetooth
-pairing in approximately 1–3 seconds, which makes a persistent loss of power
-unlikely. The smart-off variant changes only the `smart-mode` devicetree
-property; CPI, axes, keymap, source revisions, BLE configuration, and reporting
-path remain unchanged.
+The smart-on official baseline and the smart-off variant both reproduced a
+whole-central/BLE freeze during active trackball use. A single physical reset
+restored the existing Bluetooth pairing in approximately 1–3 seconds, which
+makes a persistent loss of power unlikely and rejects smart mode as a sufficient
+explanation.
+
+The 125 Hz variant returns to the smart-on baseline and compiles the exact
+PMW3610 source from the pinned Zephyr tree. It intercepts only the driver's
+relative X/Y input reports, sums all deltas received within an 8 ms window, and
+emits the accumulated movement as one synchronized report. This reduces host
+report pressure without changing CPI, pointer distance, axis handling, smart
+mode, sensor reads, or SPI traffic.

@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: MIT
+
+menuconfig INPUT_PMW3610_RATE_LIMITED
+    bool "PMW3610 input driver with an aggregated report-rate limit"
+    depends on INPUT
+    depends on DT_HAS_PIXART_PMW3610_ENABLED
+    select SPI
+    help
+      Compile the pinned Zephyr PMW3610 driver while aggregating relative X/Y
+      reports to a bounded host report rate.
+
+if INPUT_PMW3610_RATE_LIMITED
+
+config PMW3610_RATE_LIMIT_INTERVAL_MS
+    int "Minimum interval between aggregated PMW3610 reports"
+    default 8
+    range 1 100
+    help
+      Minimum report interval in milliseconds. Relative X/Y deltas are summed
+      between reports so pointer distance and sensitivity are preserved.
+
+endif
